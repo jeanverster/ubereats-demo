@@ -238,7 +238,7 @@ export default ({ y, onMeasurement }: ContentProps) => {
       <View style={styles.section}>
         <Text style={styles.title2}>Restaurant info</Text>
         <View style={styles.info}>
-          <Text style={styles.text}>Europaallee 48, Zürich, Zürich 8004</Text>
+          <Text style={styles.text}>56 Buckingham Avenue, Randburg, 2196</Text>
           <Text style={styles.link}>More info</Text>
         </View>
       </View>
@@ -251,7 +251,7 @@ export default ({ y, onMeasurement }: ContentProps) => {
             nativeEvent: {
               layout: { y: anchor }
             }
-          }) => onMeasurement(index, { name, anchor })}
+          }) => onMeasurement(index, { name, anchor: anchor - 142 })}
         >
           <Text style={styles.title1}>{name}</Text>
           {menuItems.map(({ title, description, price }, j) => (

@@ -111,29 +111,26 @@ export default ({ transition, y, tabs, scrollView }: TabHeaderProps) => {
           ]}
         />
       </View>
-      {Platform.OS === "ios" && (
-        // see https://github.com/react-native-community/react-native-masked-view/issues/22
-        <MaskedView style={StyleSheet.absoluteFill} maskElement={maskElement}>
-          <Animated.View
-            style={{
-              ...StyleSheet.absoluteFillObject,
-              transform: [{ translateX }]
+      <MaskedView style={StyleSheet.absoluteFill} maskElement={maskElement}>
+        <Animated.View
+          style={{
+            ...StyleSheet.absoluteFillObject,
+            transform: [{ translateX }]
+          }}
+        >
+          <Tabs
+            active
+            onPress={i => {
+              if (scrollView.current) {
+                scrollView.current
+                  .getNode()
+                  .scrollTo({ y: tabs[i].anchor + 1 });
+              }
             }}
-          >
-            <Tabs
-              active
-              onPress={i => {
-                if (scrollView.current) {
-                  scrollView.current
-                    .getNode()
-                    .scrollTo({ y: tabs[i].anchor + 1 });
-                }
-              }}
-              {...{ tabs, translateX }}
-            />
-          </Animated.View>
-        </MaskedView>
-      )}
+            {...{ tabs, translateX }}
+          />
+        </Animated.View>
+      </MaskedView>
     </Animated.View>
   );
 };

@@ -25,7 +25,7 @@ interface HeaderImageProps {
 export default ({ y }: HeaderImageProps) => {
   const height = interpolate(y, {
     inputRange: [-100, 0],
-    outputRange: [HEADER_IMAGE_HEIGHT, HEADER_IMAGE_HEIGHT],
+    outputRange: [HEADER_IMAGE_HEIGHT + 100, HEADER_IMAGE_HEIGHT],
     extrapolateRight: Extrapolate.CLAMP
   });
   const top = interpolate(y, {
